@@ -1,0 +1,6 @@
+{
+  //工单guid
+  inspectGuid: "xxxxx",
+  //工单名 即 工单编号
+  inspectName: "202302021220"
+}

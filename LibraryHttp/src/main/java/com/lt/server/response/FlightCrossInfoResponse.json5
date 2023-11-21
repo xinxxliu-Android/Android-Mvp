@@ -1,0 +1,18 @@
+{
+  /**
+    * 交跨航线id
+    */
+  crossSectionLineGuid: "",
+  /**
+   *  交跨点经度
+   */
+  crossLongitude: "",
+  /**
+   *  交跨点纬度
+   */
+   crossLatitude: "",
+  /**
+   *  杆塔id
+   */
+  towerGuid: ""
+}

@@ -1,0 +1,182 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'org.jetbrains.kotlin.android'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    /**
+     * 启用httpClient 后期进行移除
+     */
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        /**
+         * applicationId 及 versionName 在 Project。channelConfig.gradle中定义
+         * 当前版本为 beta时，使用 后缀为beta的渠道，自动添加.beta后缀到 applicationId及versionName
+         * */
+        minSdkVersion rootProject.ext.android['minSdkVersion']
+        targetSdkVersion rootProject.ext.android['targetSdkVersion']
+        versionCode rootProject.ext.android['versionCode']
+        versionName rootProject.ext.android['versionName']
+//        manifestPlaceholders = rootProject.ext.placeHolders
+        ndk {
+            //设置支持的SO库架构
+            abiFilters = rootProject.ext.abiFilter
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.PROJECT_PACKAGE_NAME 值为当前应用包名。 方便调用
+         */
+        buildConfigField "String", "PROJECT_PACKAGE_NAME", "\"${rootProject.ext.android['applicationId']}\""
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.CHANNEL_KEY值为当前渠道名。具体值参考 FlyingProject/channel.gradle文件
+         */
+        buildConfigField "String", "CHANNEL_KEY", "\"${rootProject.ext.android['CHANNEL_KEY']}\""
+
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.CHANNEL_TYPE值为当前渠道类型。具体值参考 FlyingProject/channel.gradle文件
+         */
+        buildConfigField "int", "CHANNEL_TYPE", "${rootProject.ext.android['CHANNEL_TYPE']}"
+
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.VERSION_NAME值为当前应用版本名称。具体值参考 FlyingProject/app/channelConfig.gradle
+         */
+        buildConfigField "String", "VERSION_NAME", "\"${rootProject.ext.android['versionName']}\""
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.VERSION_NAME值为当前应用版本名称。具体值参考 FlyingProject/config.gradle
+         */
+        buildConfigField "String", "VERSION_CODE", "\"${versionCode}\""
+
+//        /**
+//         * V4、V5版本区分
+//         */
+//        buildConfigField "int", "DJI_VERSION", "${rootProject.ext.android.djiVersion}"
+//        /**
+//         * 安全交互平台开关
+//         */
+//        buildConfigField "Boolean", "SAFE_CHANNEL", "${rootProject.ext.config.SAFE_MODE}"
+//
+//        /**
+//         * 是否单机版
+//         */
+//        buildConfigField "Boolean", "IS_ALONE", "${rootProject.ext.config.IS_ALONE}"
+//
+//        /**
+//         * 是否集成I国网
+//         */
+//        buildConfigField "Boolean", "USE_IGW", "${rootProject.ext.config.USE_IGW}"
+//
+//        /**
+//         * 是否集成I国网并使用I国网登陆
+//         */
+//        buildConfigField "Boolean", "USE_IGW_LOGIN", "${rootProject.ext.config.USE_IGW_LOGIN}"
+//
+//        /**
+//         * 当前无人机授权模式 AUTHORIZATION_KEY  2种模式  无人机AIRCRAFT 和 平板 SLAB
+//         */
+//        buildConfigField "String", "SIGN_MODE", "\"${rootProject.ext.config.AUTHORIZATION_KEY}\""
+//
+//        /**
+//         * 是否为新能源
+//         */
+//        buildConfigField "Boolean", "IS_ENERGY", "${rootProject.ext.config.IS_ENERGY}"
+        //app名称
+//        buildConfigField "String", "APP_NAME", "\"${rootProject.ext.config.APP_NAME}\""
+
+//        /**
+//         * 是否使用中科方寸知微图像压缩功能
+//         */
+//        buildConfigField "Boolean", "IS_USER_IMAGE_COMPRE", "${rootProject.ext.config.IS_USER_IMAGE_COMPRE}"
+//
+//        /**
+//         * 是否为内网环境,根据环境配置默认自定义RTK信息
+//         */
+//        buildConfigField "Boolean", "LDM_MODE", "${rootProject.ext.config.LDM_MODE}"
+    }
+    //签名文件配置
+    signingConfigs {
+//        release {
+//            keyAlias = 'hanchuang'
+//            keyPassword 'hanchuang2019'
+//            storePassword 'hanchuang2019'
+//            storeFile file('../app_key.jks')
+//        }
+    }
+//    debug时 混淆开关  打开混淆后 无法断点 用以测试debug模式下 混淆效果
+    def openMinify = false;
+    buildTypes {
+        // 参考 https://www.cnblogs.com/Im-Victor/p/9450815.html
+        release {
+//            manifestPlaceholders = rootProject.ext.placeHolders
+            minifyEnabled false          //缩小包
+            shrinkResources false        //去除不使用的资源      一般不建议移除 防止未实时引用的资源文件被移除掉
+            zipAlignEnabled false        //是否使用zip压缩工具
+//            signingConfig signingConfigs.release
+            debuggable false            //是否生成debug包
+            jniDebuggable false         //是否使用debug的jni 编译生成apk
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled openMinify          //缩小包
+            shrinkResources openMinify        //去除不使用的资源    一般不建议移除 防止未实时引用的资源文件被移除掉
+            zipAlignEnabled openMinify        //是否使用zip压缩工具
+//            signingConfig signingConfigs.release
+            debuggable true            //是否生成debug包
+            jniDebuggable true         //是否使用debug的jni 编译生成apk
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    // 支持java8语法
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+//    kotlinOptions{
+//        jvmTarget = JavaVersion.VERSION_11
+//    }
+    aaptOptions {
+        cruncherEnabled true//快速处理PNG图片
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+}
+dependencies {
+    implementation fileTree(dir: 'libs-safe', include: ['*.jar', '*.aar'])
+    testImplementation('junit:junit:4.12', rootProject.ext.excludeAndroidxGroup)
+    androidTestImplementation('androidx.test.ext:junit:1.1.2', rootProject.ext.excludeAndroidxGroup)
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0', rootProject.ext.excludeAndroidxGroup)
+    debugImplementation(rootProject.ext.dependencies['leakcanary'], {
+        //kotlin去重
+        exclude group: "org.jetbrains.kotlin"
+    })
+    implementation (rootProject.ext.androidX['core_ktx'],rootProject.ext.excludeAndroidxGroup)
+}
+/**
+ *  manifest 编译后处理。
+ *  当前进行 移除app不需要的权限操作。
+ */
+//project.afterEvaluate {
+//    project.android.applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            output.processResourcesProvider
+//            output.processResourcesProvider.get().doFirst { pm ->
+//                String manifestPath = output.processResources.manifestFile;
+//                def manifestContent = file(manifestPath).getText()
+//                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.READ_CONTACTS" />', '')
+//                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.WRITE_CONTACTS" />', '')
+//                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.READ_CALL_LOG" />', '')
+//                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.WRITE_CALL_LOG" />', '')
+//                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />', '')
+////                manifestContent = manifestContent.replace('<uses-permission android:name="android.permission.RECORD_AUDIO" />', '')
+//                file(manifestPath).write(manifestContent)
+//            }
+//        }
+//    }
+//}

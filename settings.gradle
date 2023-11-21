@@ -1,0 +1,7 @@
+include ':app'
+include ':ibrarybase'
+include ':LibraryUtils'
+include ':LibraryLog'
+include ':LibraryInterface'
+include ':LibraryHttp'
+

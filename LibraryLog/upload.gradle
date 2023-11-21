@@ -1,0 +1,43 @@
+//apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+
+def POM_VERSION = '1.0.0'
+def POM_ARTIFACTID = "lib-log-v4"//项目名称id
+def POM_GROUPID = 'com.hc'  //项目组id
+def NEXUS_USERNAME = 'zxhc'   //用户名
+def NEXUS_PASSWORD = 'Jsepc01!'  //密码
+def NEXUS_REPOSITORY_URL = 'http://172.16.4.192:8081/repository/maven-host-app/'  //repository的URL
+
+afterEvaluate {
+    publishing {
+//    配置maven-publishing插件的输出物
+        publications {
+            maven(MavenPublication) {
+                from components.release
+                artifact sourceJar
+//                afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+                groupId = POM_GROUPID
+                artifactId = POM_ARTIFACTID
+                version = POM_VERSION
+            }
+        }
+        repositories { RepositoryHandler handler ->
+//             仓库用户名密码
+            handler.maven { MavenArtifactRepository mavenArtifactRepository ->
+                // maven 仓库地址
+                url NEXUS_REPOSITORY_URL
+                allowInsecureProtocol true
+                // 访问仓库的 账号和密码
+                credentials {
+                    username = NEXUS_USERNAME
+                    password = NEXUS_PASSWORD
+                }
+            }
+        }
+    }
+}
+// 1. 增加上传源码的task
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.getSrcDirs()
+    archiveClassifier = "sources"
+}

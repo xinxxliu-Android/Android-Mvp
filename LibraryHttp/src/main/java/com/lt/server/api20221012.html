@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+      <title>通用APP接口</title>
+      <meta charset="utf-8" />
+      <style>@charset "UTF-8";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(255, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  color: #393838;
+  position: relative;
+}
+
+table {
+  margin: 10px 0 15px 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 3px 10px;
+}
+
+th {
+  padding: 5px 10px;
+}
+
+a, a:link, a:visited {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #59d69d;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+p {
+  padding-left: 10px;
+  margin-bottom: 9px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #404040;
+  line-height: 36px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h3 {
+  clear: both;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid #59d69d;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+blockquote {
+  padding: 13px 13px 21px 15px;
+  margin-bottom: 18px;
+  font-family: georgia, serif;
+  font-style: italic;
+}
+
+blockquote:before {
+  font-size: 40px;
+  margin-left: -10px;
+  font-family: georgia, serif;
+  color: #eee;
+}
+
+blockquote p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+
+code {
+  background-color: #fee9cc;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 1px 3px;
+  font-size: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+pre {
+  display: block;
+  padding: 14px;
+  margin: 0 0 18px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #d9d9d9;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f6f6f6;
+}
+
+pre code {
+  background-color: #f6f6f6;
+  color: #737373;
+  font-size: 11px;
+  padding: 0;
+}
+
+sup {
+  font-size: 0.83em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+@media print {
+  body,
+  code,
+  pre code,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 260px;
+}
+
+.table-of-contents > ul > li > a {
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.table-of-contents ul {
+  overflow: auto;
+  margin: 0px;
+  height: 100%;
+  padding: 0px 0px;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.table-of-contents ul li {
+  padding-left: 20px;
+}
+
+.table-of-contents a {
+  padding: 2px 0px;
+  display: block;
+  text-decoration: none;
+}
+
+.content-right {
+  max-width: 700px;
+  margin-left: 290px;
+  padding-left: 70px;
+  flex-grow: 1;
+}
+.content-right h2:target {
+  padding-top: 80px;
+}
+
+body > p {
+  margin-left: 30px;
+}
+
+body > table {
+  margin-left: 30px;
+}
+
+body > pre {
+  margin-left: 30px;
+}
+
+.curProject {
+  position: fixed;
+  top: 20px;
+  font-size: 25px;
+  color: black;
+  margin-left: -240px;
+  width: 240px;
+  padding: 5px;
+  line-height: 25px;
+  box-sizing: border-box;
+}
+
+.g-doc {
+  margin-top: 56px;
+  padding-top: 24px;
+  display: flex;
+}
+
+.curproject-name {
+  font-size: 42px;
+}
+
+.m-header {
+  background: #32363a;
+  height: 56px;
+  line-height: 56px;
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.m-header .title {
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  margin-left: 16px;
+  padding: 0;
+  line-height: 56px;
+  border: none;
+}
+.m-header .nav {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  right: 32px;
+  top: 0;
+}
+.m-header .nav a {
+  color: #fff;
+  margin-left: 16px;
+  padding: 8px;
+  transition: color .2s;
+}
+.m-header .nav a:hover {
+  color: #59d69d;
+}
+
+.m-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*# sourceMappingURL=defaultTheme.css.map */
+</style>
+      </head>
+      <body>
+        <div class="m-header">
+          <a href="#" style="display: inherit;"><svg class="svg" width="32px" height="32px" viewBox="0 0 64 64" version="1.1"><title>Icon</title><desc>Created with Sketch.</desc><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"><stop stop-color="#FFFFFF" offset="0%"></stop><stop stop-color="#F2F2F2" offset="100%"></stop></linearGradient><circle id="path-2" cx="31.9988602" cy="31.9988602" r="2.92886048"></circle><filter x="-85.4%" y="-68.3%" width="270.7%" height="270.7%" filterUnits="objectBoundingBox" id="filter-3"><feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.159703351 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="大屏幕"><g id="Icon"><circle id="Oval-1" fill="url(#linearGradient-1)" cx="32" cy="32" r="32"></circle><path d="M36.7078009,31.8054514 L36.7078009,51.7110548 C36.7078009,54.2844537 34.6258634,56.3695395 32.0579205,56.3695395 C29.4899777,56.3695395 27.4099998,54.0704461 27.4099998,51.7941246 L27.4099998,31.8061972 C27.4099998,29.528395 29.4909575,27.218453 32.0589004,27.230043 C34.6268432,27.241633 36.7078009,29.528395 36.7078009,31.8054514 Z" id="blue" fill="#2359F1" fill-rule="nonzero"></path><path d="M45.2586091,17.1026914 C45.2586091,17.1026914 45.5657231,34.0524383 45.2345291,37.01141 C44.9033351,39.9703817 43.1767091,41.6667796 40.6088126,41.6667796 C38.040916,41.6667796 35.9609757,39.3676862 35.9609757,37.0913646 L35.9609757,17.1034372 C35.9609757,14.825635 38.0418959,12.515693 40.6097924,12.527283 C43.177689,12.538873 45.2586091,14.825635 45.2586091,17.1026914 Z" id="green" fill="#57CF27" fill-rule="nonzero" transform="translate(40.674608, 27.097010) rotate(60.000000) translate(-40.674608, -27.097010) "></path><path d="M28.0410158,17.0465598 L28.0410158,36.9521632 C28.0410158,39.525562 25.9591158,41.6106479 23.3912193,41.6106479 C20.8233227,41.6106479 18.7433824,39.3115545 18.7433824,37.035233 L18.7433824,17.0473055 C18.7433824,14.7695034 20.8243026,12.4595614 23.3921991,12.4711513 C25.9600956,12.4827413 28.0410158,14.7695034 28.0410158,17.0465598 Z" id="red" fill="#FF561B" fill-rule="nonzero" transform="translate(23.392199, 27.040878) rotate(-60.000000) translate(-23.392199, -27.040878) "></path><g id="inner-round"><use fill="black" fill-opacity="1" filter="url(#filter-3)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use><use fill="#F7F7F7" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use></g></g></g></g></svg></a>
+          <a href="#"><h1 class="title">YAPI 接口文档</h1></a>
+          <div class="nav">
+            <a href="https://hellosean1025.github.io/yapi/">YApi</a>
+          </div>
+        </div>
+        <div class="g-doc">
+          <div class="table-of-contents"><ul><li><a href="#u5de5u5355u76f8u5173">工单相关</a><ul><li><a href="#u4e0au4f20u56feu72470a3ca20id3du4e0au4f20u56feu72473e203ca3e">上传图片
+<a id=上传图片> </a></a></li><li><a href="#u4feeu6b63u8bbeu5907uff0cu4feeu6b63u8bbeu5907u4fe1u606fu63a5u53e30a3ca20id3du4feeu6b63u8bbeu5907uff0cu4feeu6b63u8bbeu5907u4fe1u606fu63a5u53e33e203ca3e">修正设备，修正设备信息接口
+<a id=修正设备，修正设备信息接口> </a></a></li><li><a href="#u5de5u5355u4e0au4f20u7cbeu7ec6u5b66u4e60u822au8ff90a3ca20id3du5de5u5355u4e0au4f20u7cbeu7ec6u5b66u4e60u822au8ff93e203ca3e">工单上传精细学习航迹
+<a id=工单上传精细学习航迹> </a></a></li><li><a href="#u5de5u5355u6267u884cu72b6u6001u540cu6b650a3ca20id3du5de5u5355u6267u884cu72b6u6001u540cu6b653e203ca3e">工单执行状态同步
+<a id=工单执行状态同步> </a></a></li><li><a href="#u7ed3u675fu5de5u53550a3ca20id3du7ed3u675fu5de5u53553e203ca3e">结束工单
+<a id=结束工单> </a></a></li><li><a href="#u83b7u53d6u5de5u5355u4e2du5173u8054u8bbeu5907u4fe1u606f0a3ca20id3du83b7u53d6u5de5u5355u4e2du5173u8054u8bbeu5907u4fe1u606f3e203ca3e">获取工单中关联设备信息
+<a id=获取工单中关联设备信息> </a></a></li><li><a href="#u83b7u53d6u5de5u5355u5217u88680a3ca20id3du83b7u53d6u5de5u5355u5217u88683e203ca3e">获取工单列表
+<a id=获取工单列表> </a></a></li><li><a href="#u83b7u53d6u5de5u5355u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f0a3ca20id3du83b7u53d6u5de5u5355u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f3e203ca3e">获取工单设备精细学习模板
+<a id=获取工单设备精细学习模板> </a></a></li></ul></li><li><a href="#u6388u6743u76f8u5173">授权相关</a><ul><li><a href="#u65e0u4ebau673au91cdu547du540du63a5u53e30a3ca20id3du65e0u4ebau673au91cdu547du540du63a5u53e33e203ca3e">无人机重命名接口
+<a id=无人机重命名接口> </a></a></li><li><a href="#u8bf7u6c42appu6388u6743u63a5u53e30a3ca20id3du8bf7u6c42appu6388u6743u63a5u53e33e203ca3e">请求app授权接口
+<a id=请求app授权接口> </a></a></li></ul></li><li><a href="#u53f0u8d26u76f8u5173">台账相关</a><ul><li><a href="#u67e5u8be2u5206u7ec4u4e2du8bbeu5907u4fe1u606f0a3ca20id3du67e5u8be2u5206u7ec4u4e2du8bbeu5907u4fe1u606f3e203ca3e">查询分组中设备信息
+<a id=查询分组中设备信息> </a></a></li><li><a href="#u67e5u8be2u5206u7ec4u4fe1u606f0a3ca20id3du67e5u8be2u5206u7ec4u4fe1u606f3e203ca3e">查询分组信息
+<a id=查询分组信息> </a></a></li><li><a href="#u83b7u53d6u5f53u524du901au7528u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f0a3ca20id3du83b7u53d6u5f53u524du901au7528u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f3e203ca3e">获取当前通用设备精细学习模板
+<a id=获取当前通用设备精细学习模板> </a></a></li></ul></li><li><a href="#u5e94u7528u7248u672cu76f8u5173">应用版本相关</a><ul><li><a href="#u83b7u53d6u5f53u524dappu7248u672cu5347u7ea7u4fe1u606f0a3ca20id3du83b7u53d6u5f53u524dappu7248u672cu5347u7ea7u4fe1u606f3e203ca3e">获取当前app版本升级信息
+<a id=获取当前app版本升级信息> </a></a></li></ul></li><li><a href="#u516cu5171u5206u7c7b">公共分类</a><ul><li><a href="#u4e0au4f20u5f53u524du65e0u4ebau673au4fe1u606f0a3ca20id3du4e0au4f20u5f53u524du65e0u4ebau673au4fe1u606f3e203ca3e">上传当前无人机信息
+<a id=上传当前无人机信息> </a></a></li><li><a href="#u7528u6237u767bu51fa0a3ca20id3du7528u6237u767bu51fa3e203ca3e">用户登出
+<a id=用户登出> </a></a></li><li><a href="#u7528u6237u767bu5f550a3ca20id3du7528u6237u767bu5f553e203ca3e">用户登录
+<a id=用户登录> </a></a></li><li><a href="#u822au7ebfu6587u4ef6u4e0bu8f7d0a3ca20id3du822au7ebfu6587u4ef6u4e0bu8f7d3e203ca3e">航线文件下载
+<a id=航线文件下载> </a></a></li><li><a href="#u83b7u53d6u5f53u524du65e0u4ebau673au7684u63a8u6d41u5730u57400a3ca20id3du83b7u53d6u5f53u524du65e0u4ebau673au7684u63a8u6d41u5730u57403e203ca3e">获取当前无人机的推流地址
+<a id=获取当前无人机的推流地址> </a></a></li><li><a href="#u83b7u53d6u7a7au57dfu4fe1u606f0a3ca20id3du83b7u53d6u7a7au57dfu4fe1u606f3e203ca3e">获取空域信息
+<a id=获取空域信息> </a></a></li></ul></li></ul></div>
+          <div id="right" class="content-right">
+           <h1 class="curproject-name"> 通用APP接口 </h1> 
+ 全国通用app与后台交互接口列表
+<h1 id="u5de5u5355u76f8u5173">工单相关</h1>
+<p></p>
+<h2 id="u4e0au4f20u56feu72470a3ca20id3du4e0au4f20u56feu72473e203ca3e">上传图片
+<a id=上传图片> </a></h2>
+<p></p>
+<h3 id="">基本信息</h3>
+<p><strong>Path：</strong> /app/main/appReceivePic</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-2">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>multipart/form-data</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Query</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inspectGuid</td>
+<td>是</td>
+<td>xxxx</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inspectGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>工单guid</td>
+</tr>
+<tr>
+<td>deviceType</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>0杆塔 1风机 2太阳能板</td>
+</tr>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>设备分组的guid 可用作线路guid</td>
+</tr>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>设备guid</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file</td>
+<td>是</td>
+<td>xx</td>
+<td>图片</td>
+</tr>
+<tr>
+<td>sumPic</td>
+<td>text</td>
+<td>是</td>
+<td>3</td>
+<td>照片总数</td>
+</tr>
+<tr>
+<td>isOver</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>是否是最后一张 0否 1是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-3">返回数据</h3>
+<pre><code class="language-javascript">{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;empty object&quot;,&quot;properties&quot;:{}}
+</code></pre>
+<h2 id="u4feeu6b63u8bbeu5907uff0cu4feeu6b63u8bbeu5907u4fe1u606fu63a5u53e30a3ca20id3du4feeu6b63u8bbeu5907uff0cu4feeu6b63u8bbeu5907u4fe1u606fu63a5u53e33e203ca3e">修正设备，修正设备信息接口
+<a id=修正设备，修正设备信息接口> </a></h2>
+<p></p>
+<h3 id="-4">基本信息</h3>
+<p><strong>Path：</strong> /app/main/updateDevice</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-5">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>la</td>
+<td>text</td>
+<td>是</td>
+<td>11.11</td>
+<td>设备坐标 纬度 84坐标系</td>
+</tr>
+<tr>
+<td>lo</td>
+<td>text</td>
+<td>是</td>
+<td>11.11</td>
+<td>设备坐标 经度 84坐标系</td>
+</tr>
+<tr>
+<td>al</td>
+<td>text</td>
+<td>是</td>
+<td>11.11</td>
+<td>设备坐标 高度 海拔高度</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>text</td>
+<td>是</td>
+<td>55.5</td>
+<td>设备朝向 相对磁北方向角度 180 - -180范围</td>
+</tr>
+<tr>
+<td>voltageLevel</td>
+<td>text</td>
+<td>是</td>
+<td>110</td>
+<td>电压 单位kv</td>
+</tr>
+<tr>
+<td>deviceType</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>设备类型 0输电 1配电 2风机 3光伏</td>
+</tr>
+<tr>
+<td>deviceName</td>
+<td>text</td>
+<td>是</td>
+<td>#5a</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>1222334343434343</td>
+<td>设备guid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-6">返回数据</h3>
+<pre><code class="language-javascript">{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;empty object&quot;,&quot;properties&quot;:{}}
+</code></pre>
+<h2 id="u5de5u5355u4e0au4f20u7cbeu7ec6u5b66u4e60u822au8ff90a3ca20id3du5de5u5355u4e0au4f20u7cbeu7ec6u5b66u4e60u822au8ff93e203ca3e">工单上传精细学习航迹
+<a id=工单上传精细学习航迹> </a></h2>
+<p></p>
+<h3 id="-7">基本信息</h3>
+<p><strong>Path：</strong> /app/workOrder/upgradeProtocol</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-8">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>当前航迹对应的设备guid</td>
+</tr>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>当前航迹对应的设备所在的分组guid</td>
+</tr>
+<tr>
+<td>orderGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>当前协议对应的工单guid</td>
+</tr>
+<tr>
+<td>workType</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>0 非红外 1 红外</td>
+</tr>
+<tr>
+<td>deviceDisplayName</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>采集当前航迹的 飞机型号</td>
+</tr>
+<tr>
+<td>protocolData</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>新版app手动采集航迹协议，版本号为 10.0.0.1 协议以base64加密</td>
+</tr>
+</tbody>
+</table>
+<h2 id="u5de5u5355u6267u884cu72b6u6001u540cu6b650a3ca20id3du5de5u5355u6267u884cu72b6u6001u540cu6b653e203ca3e">工单执行状态同步
+<a id=工单执行状态同步> </a></h2>
+<p></p>
+<h3 id="-9">基本信息</h3>
+<p><strong>Path：</strong> /app/main/updateInspectStatus</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-10">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inspectGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>工单唯一guid</td>
+</tr>
+<tr>
+<td>flyGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxx</td>
+<td>架次guid 与 当前飞机状态的 架次一致</td>
+</tr>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>当前巡检完的设备，所对应的分组的guid</td>
+</tr>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>当前巡检完的设备 guid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-11">返回数据</h3>
+<pre><code class="language-javascript">{}
+</code></pre>
+<h2 id="u7ed3u675fu5de5u53550a3ca20id3du7ed3u675fu5de5u53553e203ca3e">结束工单
+<a id=结束工单> </a></h2>
+<p></p>
+<h3 id="-12">基本信息</h3>
+<p><strong>Path：</strong> /app/main/appFinishOrder</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-13">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inspectGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>杆塔guid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-14">返回数据</h3>
+<pre><code class="language-javascript">{}
+</code></pre>
+<h2 id="u83b7u53d6u5de5u5355u4e2du5173u8054u8bbeu5907u4fe1u606f0a3ca20id3du83b7u53d6u5de5u5355u4e2du5173u8054u8bbeu5907u4fe1u606f3e203ca3e">获取工单中关联设备信息
+<a id=获取工单中关联设备信息> </a></h2>
+<p></p>
+<h3 id="-15">基本信息</h3>
+<p><strong>Path：</strong> /app/main/orderDetails</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-16">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inspectGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>工单唯一识别码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-17">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+   * 工单内需要巡检的分组的集合
+   */
+  data: [
+    {
+      /**
+   * 线路/分组 识别码
+   */
+      groupGuid: &quot;&quot;,
+      /**
+   * 线路/分组名
+   */
+      groupName: &quot;&quot;,
+      /**
+     * 分组类型
+     * 杆塔 风机 光伏等
+     * 其中：
+     * 0：杆塔分组
+     * 1：风机分组
+     * 2：光伏分组
+     * 3：网格分组(多种设备构成的分组，分组内可同时拥有多个设备)
+     */
+      groupType: 1,
+      /**
+         * 线路上的杆塔的 杆塔号集合
+         */
+      devices: [
+        {
+          /**
+    * 设备所属分组 名
+    *
+    * xxxx线
+    * xxx工区
+    * xxxx工区
+    * xx2号网格
+    */
+          groupName: &quot;xxx&quot;,
+          /**
+           * 设备所属分组id
+           */
+          groupGuid: &quot;xxxx&quot;,
+          /**
+           * 分组类型
+           * 杆塔 风机 光伏等
+           * 其中：
+           * 0：杆塔分组
+           * 1：风机分组
+           * 2：光伏分组
+           * 3：网格分组(多种设备构成的分组，分组内可同时拥有多个设备)
+           */
+          groupType: 0,
+          /**
+       * 经度 纬度 海拔高度 台账位置
+       */
+          la: 11.11,
+          lo: 11.11,
+          al: 11.11,
+          /**
+                   * 设备唯一识别码
+                   */
+          deviceGuid: &quot;&quot;,
+          /**
+       * 设备编号
+       */
+          deviceNumber: &quot;&quot;,
+          /**
+    * 设备名
+    * 如：xxx号杆塔  或 xxx号风机  或 xxx号太阳能板 等
+    * 设备完全限定名 此字段在重命名、工单使用时会进行展示
+    * TODO 暂未使用该字段
+    */
+          deviceName: &quot;11&quot;,
+          /**
+       * 设备备注
+       */
+          deviceMarker: &quot;xxxx&quot;,
+          /**
+            * 设备类型
+            */
+          deviceType: 1,
+          /**
+       * 电压等级 kv
+       */
+          voltageLevel: 111,
+          /**
+       * 设备 PMS编码
+       */
+          pmsCode: &quot;111&quot;,
+          /**
+         * 设备朝向
+         * 下发非精细巡检工单时，该值为必要值
+         * 取值范围： 180 - -180
+         * 取值基准： 磁北方向
+         */
+          radius: 155.6,
+          /**
+       *  设备精细巡检航迹
+       *  Base64加密字符串
+       *  TODO 暂不使用该字段
+       */
+          protocol: &quot;xxxx&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="u83b7u53d6u5de5u5355u5217u88680a3ca20id3du83b7u53d6u5de5u5355u5217u88683e203ca3e">获取工单列表
+<a id=获取工单列表> </a></h2>
+<p></p>
+<h3 id="-18">基本信息</h3>
+<p><strong>Path：</strong> /app/main/orderList</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-19">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNo</td>
+<td>text</td>
+<td>否</td>
+<td>0</td>
+<td>从0开始，不传默认为0</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>text</td>
+<td>否</td>
+<td>10</td>
+<td>默认为10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-20">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+  * 工单列表
+  */
+  data: [
+    {
+      /**
+         * 工单guid
+         */
+      inspectGuid: &quot;&quot;,
+      /**
+        * 工单名
+        */
+      inspectName: &quot;&quot;,
+      //工作班名称
+      workerGroupName: &quot;&quot;,
+      /**
+         * 签发人
+         */
+      signer: &quot;&quot;,
+      /**
+         * 审核人
+         */
+      appRover: &quot;&quot;,
+      /**
+       * 计划工作许可时间
+       * 一定是 最后一个流程确定的时间
+       * 即 最后一个人签完字后 即可开始执行工单 这个签字时间  long
+       */
+      planPermitTime: 11111,
+      /**
+         * 工单计划工作开始时间
+         */
+      planStartTime: 111111,
+      /**
+         * 工单计划工作结束时间 可以为0 则 不限制超时
+         */
+      planEndTime: 111111,
+      /**
+         * 工作许可人 名字
+         */
+      workPermitPeople: &quot;&quot;,
+      /**
+         * 工作负责人 名字
+         */
+      workerPeople: &quot;&quot;,
+      /**
+         * 限制使用的无人机类型名 如 Phantom 4 RTK
+         */
+      uavCategory: &quot;&quot;,
+
+      /**
+        * 当前工单默认巡检方式,对应{@link com.lt.config.MissionModeConfig}
+        */
+      inspectMode: 1,
+      /**
+        * 当前工单巡检方式可选列表 纯数字 对应 {@link com.lt.config.MissionModeConfig}
+        */
+      inspectModeList: [&quot;1&quot;,&quot;3&quot;],
+      /**
+         * 无人机设备编号 即 当前工单授权的无人机设备编号
+         * 可能允许多个设备接受工单
+         * 如果为空，则为 可任意使用无人机
+         */
+      uavEquipmentNo: [
+        &quot;&quot;,&quot;&quot;
+      ],
+      /**
+         * 当前工单，配置的所有飞手的飞手名(一般为5个内)
+         */
+      workers: [
+        &quot;张三&quot;,&quot;张三丰&quot;
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="u83b7u53d6u5de5u5355u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f0a3ca20id3du83b7u53d6u5de5u5355u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f3e203ca3e">获取工单设备精细学习模板
+<a id=获取工单设备精细学习模板> </a></h2>
+<p></p>
+<h3 id="-21">基本信息</h3>
+<p><strong>Path：</strong> /app/main/orderDeviceModel</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-22">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxx</td>
+<td>当前需要采集航迹的设备 guid</td>
+</tr>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>当前需要采集航迹的设备 所对应的分组 的guid</td>
+</tr>
+<tr>
+<td>orderGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>当前工单 guid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-23">返回数据</h3>
+<pre><code class="language-javascript">{
+    /**
+     * 设备采集航迹模板
+     * 单个设备可能存在绑定的多个模板
+     * 9cebddaa79cad752ac
+     */
+    modelData: [
+        //每一个字符串 都是一个杆塔学习模板数据 具体协议与刘红锁对接 需加密 加密类型与刘红锁对接
+        &quot;&quot;,&quot;&quot;,&quot;&quot;
+    ]
+}
+</code></pre>
+<h1 id="u6388u6743u76f8u5173">授权相关</h1>
+<p></p>
+<h2 id="u65e0u4ebau673au91cdu547du540du63a5u53e30a3ca20id3du65e0u4ebau673au91cdu547du540du63a5u53e33e203ca3e">无人机重命名接口
+<a id=无人机重命名接口> </a></h2>
+<p></p>
+<h3 id="-24">基本信息</h3>
+<p><strong>Path：</strong> /app/system/updateData</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-25">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxx</td>
+<td>无人机唯一识别码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>text</td>
+<td>是</td>
+<td>郭浩</td>
+<td>要重命名成得名字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-26">返回数据</h3>
+<pre><code class="language-javascript">{}
+</code></pre>
+<h2 id="u8bf7u6c42appu6388u6743u63a5u53e30a3ca20id3du8bf7u6c42appu6388u6743u63a5u53e33e203ca3e">请求app授权接口
+<a id=请求app授权接口> </a></h2>
+<p></p>
+<h3 id="-27">基本信息</h3>
+<p><strong>Path：</strong> /app/system/getSign</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-28">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxx</td>
+<td>无人机唯一识别码</td>
+</tr>
+<tr>
+<td>type</td>
+<td>text</td>
+<td>否</td>
+<td>1</td>
+<td>产品类型：1app 2树障 3航迹 4.....（默认1）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-29">返回数据</h3>
+<pre><code class="language-javascript">{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;empty object&quot;,&quot;properties&quot;:{}}
+</code></pre>
+<h1 id="u53f0u8d26u76f8u5173">台账相关</h1>
+<p></p>
+<h2 id="u67e5u8be2u5206u7ec4u4e2du8bbeu5907u4fe1u606f0a3ca20id3du67e5u8be2u5206u7ec4u4e2du8bbeu5907u4fe1u606f3e203ca3e">查询分组中设备信息
+<a id=查询分组中设备信息> </a></h2>
+<p></p>
+<h3 id="-30">基本信息</h3>
+<p><strong>Path：</strong> /app/main/deviceInfoList</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-31">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxx</td>
+<td>分组guid 可用作 线路guid</td>
+</tr>
+<tr>
+<td>pageNo</td>
+<td>text</td>
+<td>否</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>text</td>
+<td>否</td>
+<td>10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-32">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+   * 线路/分组上的设备(杆塔/风机/太阳能板等)
+   */
+  devices: [
+    {
+      /**
+* 设备所属分组 名
+*
+* xxxx线
+* xxx工区
+* xxxx工区
+* xx2号网格
+*/
+      groupName: &quot;xxx&quot;,
+      /**
+       * 设备所属分组id
+       */
+      groupGuid: &quot;xxxx&quot;,
+      /**
+       * 分组类型
+       * 杆塔 风机 光伏等
+       * 其中：
+       * 0：杆塔分组
+       * 1：风机分组
+       * 2：光伏分组
+       * 3：网格分组(多种设备构成的分组，分组内可同时拥有多个设备)
+       */
+      groupType: 0,
+      /**
+   * 经度 纬度 海拔高度 台账位置
+   */
+      la: 11.11,
+      lo: 11.11,
+      al: 11.11,
+      /**
+               * 设备唯一识别码
+               */
+      deviceGuid: &quot;&quot;,
+      /**
+   * 设备编号
+   */
+      deviceNumber: &quot;&quot;,
+      /**
+* 设备名
+* 如：xxx号杆塔  或 xxx号风机  或 xxx号太阳能板 等
+* 设备完全限定名 此字段在重命名、工单使用时会进行展示
+* TODO 暂未使用该字段
+*/
+      deviceName: &quot;11&quot;,
+        /**
+     * 设备备注
+     */
+        deviceMarker: &quot;xxxx&quot;,
+        /**
+          * 设备类型
+          */
+        deviceType: 1,
+
+        /**
+     * 电压等级 kv
+     */
+      voltageLevel: 111,
+      /**
+   * 设备 PMS编码
+   */
+      pmsCode: &quot;111&quot;,
+        /**
+       * 设备朝向
+       * 下发非精细巡检工单时，该值为必要值
+       * 取值范围： 180 - -180
+       * 取值基准： 磁北方向
+       */
+        radius: 155.6,
+        /**
+     *  设备精细巡检航迹
+     *  Base64加密字符串
+     *  TODO 暂不使用该字段
+     */
+        protocol: &quot;xxxx&quot;,
+
+    }
+  ]
+}
+</code></pre>
+<h2 id="u67e5u8be2u5206u7ec4u4fe1u606f0a3ca20id3du67e5u8be2u5206u7ec4u4fe1u606f3e203ca3e">查询分组信息
+<a id=查询分组信息> </a></h2>
+<p></p>
+<h3 id="-33">基本信息</h3>
+<p><strong>Path：</strong> /app/main/groupInfoList</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-34">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNo</td>
+<td>text</td>
+<td>否</td>
+<td>0</td>
+<td>默认为1</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>text</td>
+<td>是</td>
+<td>10</td>
+<td>默认为10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-35">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+   * 所有的分组
+   */
+  groups: [
+    {
+      /**
+  * 分组识别码
+  */
+      groupGuid: &quot;&quot;,
+      /**
+   * 当前分组内 设备类型
+   */
+      deviceType: 1,
+      /**
+   * 线路/分组名
+   */
+      groupName: &quot;&quot;,
+      /**
+   * 分组内的设备 guid集合 全部数据
+   */
+      deviceNumbers: [
+        &quot;&quot;,
+        &quot;&quot;
+      ],
+    }
+  ]
+}
+</code></pre>
+<h2 id="u83b7u53d6u5f53u524du901au7528u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f0a3ca20id3du83b7u53d6u5f53u524du901au7528u8bbeu5907u7cbeu7ec6u5b66u4e60u6a21u677f3e203ca3e">获取当前通用设备精细学习模板
+<a id=获取当前通用设备精细学习模板> </a></h2>
+<p></p>
+<h3 id="-36">基本信息</h3>
+<p><strong>Path：</strong> /app/main/ledgerDeviceModel</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-37">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-38">返回数据</h3>
+<pre><code class="language-javascript">{
+    /**
+     * 设备采集航迹模板
+     * 单个设备可能存在绑定的多个模板
+     * 9cebddaa79cad752ac
+     */
+    modelData: [
+        //每一个字符串 都是一个杆塔学习模板数据 具体协议与刘红锁对接 需加密 加密类型与刘红锁对接
+        &quot;&quot;,&quot;&quot;,&quot;&quot;
+    ]
+}
+</code></pre>
+<h1 id="u5e94u7528u7248u672cu76f8u5173">应用版本相关</h1>
+<p></p>
+<h2 id="u83b7u53d6u5f53u524dappu7248u672cu5347u7ea7u4fe1u606f0a3ca20id3du83b7u53d6u5f53u524dappu7248u672cu5347u7ea7u4fe1u606f3e203ca3e">获取当前app版本升级信息
+<a id=获取当前app版本升级信息> </a></h2>
+<p></p>
+<h3 id="-39">基本信息</h3>
+<p><strong>Path：</strong> /app/system/versionInfo</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-40">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>versionName</td>
+<td>text</td>
+<td>是</td>
+<td>1.0.0</td>
+<td>当前app版本名称</td>
+</tr>
+<tr>
+<td>versionCode</td>
+<td>text</td>
+<td>是</td>
+<td>50</td>
+<td>当前app版本号</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>text</td>
+<td>是</td>
+<td>2020-04-20 20:00:00 或者 2020-04-20</td>
+<td>当前app发布时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-41">返回数据</h3>
+<pre><code class="language-javascript">{
+    /**
+     * 1641866024000 版本发布时间
+     */
+    upTime: 112131231,
+    /**
+     * 文件路径
+     * group1/M00/02/27/wKgBw2Hc43iAfWamAAAAPvLtZGo340.apk
+     */
+    filePath: &quot;&quot;,
+    /**
+     * 版本更新日志
+     * 从app当前版本--该版本
+     */
+    description: &quot;&quot;,
+    /**
+    * 版本名
+    */
+    versionName: &quot;&quot;,
+    /**
+     * 版本号
+     */
+    versionCode: 123,
+    /**
+     * 否强制更新 0 非强制 1 强制
+     */
+    compel: 0
+}
+</code></pre>
+<h1 id="u516cu5171u5206u7c7b">公共分类</h1>
+<p></p>
+<h2 id="u4e0au4f20u5f53u524du65e0u4ebau673au4fe1u606f0a3ca20id3du4e0au4f20u5f53u524du65e0u4ebau673au4fe1u606f3e203ca3e">上传当前无人机信息
+<a id=上传当前无人机信息> </a></h2>
+<p></p>
+<h3 id="-42">基本信息</h3>
+<p><strong>Path：</strong> /app/main/appReceiveAircraft</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-43">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flight</td>
+<td>text</td>
+<td>是</td>
+<td>obj</td>
+<td>飞机状态</td>
+</tr>
+<tr>
+<td>flight-serialNumber</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxx</td>
+<td>飞机唯一识别码</td>
+</tr>
+<tr>
+<td>flight-modelName</td>
+<td>text</td>
+<td>是</td>
+<td>Phantom 4 RTK</td>
+<td>无人机型号</td>
+</tr>
+<tr>
+<td>flight-flyStr</td>
+<td>text</td>
+<td>是</td>
+<td>风速很高,谨慎飞行并确保飞机保持在视线范围内  可以起飞(RTK)</td>
+<td>前飞行信息：</td>
+</tr>
+</tbody>
+</table>
+<pre><code> * 如 可以起飞(RTK)  正在飞行(RTK)
+ * 注意：该字段长度会有很大差异 如果web端进行显示，注意控制显示宽度 |
+</code></pre>
+<p>| flight-flyState | text  |  是 |  1  |  飞行状态<br>
+0 没飞、1 在飞、 2 飞完 3.飞航线  4.下载图 5.上传图 |<br>
+| flight-lo | text  |  是 |  51.051231453  |  longitude 飞机当前 经度 |<br>
+| flight-la | text  |  是 |  20.22115115  |  latitude 飞机当前 维度 |<br>
+| flight-al | text  |  是 |  20.21  |  altitude 飞机当前 海拔高度 |<br>
+| flight-hlo | text  |  是 |  20.21  |  飞机当前返航点，即起飞点经度 |<br>
+| flight-hla | text  |  是 |  20.21  |  飞机当前返航点，即起飞点维度 |<br>
+| flight-hal | text  |  是 |  20.21  |  飞机当前返航点，即起飞点高度 |<br>
+| flight-gpsCount | text  |  是 |  1  |  飞机当前获取到得卫星数量 |<br>
+| flight-hSpeed | text  |  是 |  20.21  |  飞机当前水平飞行速度 |<br>
+| flight-vSpeed | text  |  是 |  20.21  |  飞机当前垂直飞行速度 |<br>
+| flight-rtkState | text  |  是 |  -1  |  rtk当前状态 -1 不支持 0 未打开开关 1 未连接 2 已连接使用 |<br>
+| flight-yaw | text  |  是 |  -180  |  航向角 基于正北方向的角度 范围180- -180 |<br>
+| flight-distance | text  |  是 |  500  |  最近的架次 飞行的总距离 |<br>
+| flight-flySeconds | text  |  是 |  50  |  从最近一次起飞后，飞行的时长  单位 秒 |<br>
+| gimbal | text  |  是 |  array  |   |<br>
+| gimbal-serialNumber | text  |  是 |  xxxxxxxx  |  云台唯一识别码 |<br>
+| gimbal-displayName | text  |  否 |  H20T  |  云台中文描述名 如果 H20T |<br>
+| gimbal-pitch | text  |  是 |  -50  |  云台俯仰角 |<br>
+| gimbal-roll | text  |  是 |  50  |  云台横滚角 |<br>
+| gimbal-yaw | text  |  是 |  50  |  云台航向角 |<br>
+| battery | text  |  是 |  array  |  飞机电池 |<br>
+| battery-serialNumber | text  |  是 |  xxxxx  |  电池唯一识别码 |<br>
+| battery-voltage | text  |  是 |  20000  |  电压 mv |<br>
+| battery-current | text  |  是 |  20000.1  |  电流 负数放电 ma |<br>
+| battery-chargeRemainingInPercent | text  |  是 |  80  |  剩余电量百分比 |<br>
+| battery-fullChargeCapacity | text  |  是 |  8000000  |  电池当前最大容量 ma |<br>
+| battery-numberOfDischarges | text  |  是 |  29  |  电池充电次数 |<br>
+| battery-designCapacity | text  |  是 |  90000000  |  电池设计最大容量 ma |<br>
+| battery-lifetimeRemaining | text  |  否 |  60  |  寿命    百分比 |<br>
+| battery-temperature | text  |  否 |  20.55  |  当前电池温度 |<br>
+| remote | text  |  是 |  obj  |   |<br>
+| remote-serialNumber | text  |  是 |  xxxxxx  |  遥控器唯一识别码 |<br>
+| remote-remainingChargeInmAh | text  |  是 |  550000  |  剩余电量 ma |<br>
+| remote-remainingChargeInPercent | text  |  是 |  50  |  剩余电量百分比 |<br>
+| remote-charging | text  |  是 |  true  |  当前是否正在充电 |<br>
+| remote-flight_mode | text  |  是 |  GPS  |  当前飞控模式 |<br>
+| remote-la | text  |  是 |  11.222222  |  遥控器 维度 |<br>
+| remote-lo | text  |  是 |  11.222222  |  遥控器 经度 |<br>
+| remote-al | text  |  是 |  11.222222  |  遥控器 海拔高度 |<br>
+| remote-signalLevel | text  |  是 |  50  |  遥控器 信号 百分比 |<br>
+| worker | text  |  是 |  obj  |   |<br>
+| worker-appCode | text  |  是 |  xxxxx  |  设备识别码，当前使用飞机serialNumber |<br>
+| worker-workerGuid | text  |  否 |  xxxxxx  |  飞手识别码 |<br>
+| worker-djUser | text  |  否 |  1231331  |  大疆账号 |<br>
+| task | text  |  是 |    |   |<br>
+| task-flyGuid | text  |  是 |  xxxxxxx  |  飞行架次guid |<br>
+| task-launchTime | text  |  是 |  123123123  |  最近一次的起飞时间 |<br>
+| task-landTime | text  |  是 |  123123213  |  最近一次的降落时间 |<br>
+| task-inspectGuid | text  |  否 |  xxxxxx  |  工单guid |<br>
+| task-deviceGuid | text  |  否 |  xxxxx  |  巡检的设备的唯一识别码 如 杆塔guid 风机guid |<br>
+| task-deviceType | text  |  否 |  1  |  巡检的设备类型：0杆塔 1风机 2太阳能板 |<br>
+| task-groupGuid | text  |  否 |  xxxxxxx  |  巡检的设备所在的分组guid 如：线路guid |<br>
+| task-missionCount | text  |  否 |  20  |  当前航点已执行数 |<br>
+| task-totalMissionCount | text  |  否 |  50  |  当前航点总数 |<br>
+| task-missionType | text  |  否 |  1  |  当前任务执行类型：<br>
+-1未开始巡检<br>
+* 0：精细巡检<br>
+* 1、精细巡检红外<br>
+* 2、采集航线<br>
+* 3、通道巡检<br>
+* 4、通道巡检红外<br>
+* 5、手动巡检<br>
+* 6、手动巡检红外 |<br>
+| task-highTemperature | text  |  否 |  50  |  当前画面中的最高温度，只有红外模式该字段才可用 |<br>
+| task-hPositionX | text  |  否 |    |  最高温坐标 |<br>
+| task-hPositionY | text  |  否 |    |  最高温坐标 |<br>
+| task-lowTemperature | text  |  否 |    |  当前画面中的最低温，只有红外模式该字段才可用 |<br>
+| task-lPositionX | text  |  否 |    |  最低温坐标 |<br>
+| task-lPositionY | text  |  否 |    |  最低温坐标 |<br>
+| task-takePhotoIndex | text  |  是 |  1  |  当前飞机正在执行的拍照点的索引，即当前已执行了的拍照点数量 |<br>
+| task-takePhotoCount | text  |  是 |  22  |  当前正在执行的航线任务共有多少个拍照点 |<br>
+| task-nowPointType | text  |  是 |  1  |  当前飞机正在飞往的航点的类型，1：拍照点 2：安全点 0：未起飞或无航线任务 或航线任务执行完毕 |</p>
+<h3 id="-44">返回数据</h3>
+<pre><code class="language-javascript">{}
+</code></pre>
+<h2 id="u7528u6237u767bu51fa0a3ca20id3du7528u6237u767bu51fa3e203ca3e">用户登出
+<a id=用户登出> </a></h2>
+<p></p>
+<h3 id="-45">基本信息</h3>
+<p><strong>Path：</strong> /app/system/logout</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-46">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>登录用户唯一识别码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-47">返回数据</h3>
+<pre><code class="language-javascript">{}
+</code></pre>
+<h2 id="u7528u6237u767bu5f550a3ca20id3du7528u6237u767bu5f553e203ca3e">用户登录
+<a id=用户登录> </a></h2>
+<p></p>
+<h3 id="-48">基本信息</h3>
+<p><strong>Path：</strong> /app/system/login</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-49">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loginName</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxx</td>
+<td>账号</td>
+</tr>
+<tr>
+<td>passWord</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxxx</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>ticket</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxx</td>
+<td>该字段与上方两个字段互斥，如果该字段有值，则无需上方两个字段 i国网ticket</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-50">返回数据</h3>
+<pre><code class="language-javascript">{
+    /**
+     * 用户创建时间 long
+     */
+    workerCreateTime: 111111,
+    /**
+     * 用户过期时间
+     * 用以满足临时账户需要
+     * 如果该字段为0  则为永久账户 long
+     */
+    workerOutDateTime: 1111111,
+    /**
+     * 飞手名字
+     */
+    workerName: &quot;&quot;,
+    /**
+     * 飞手照片(url地址) 头像
+     * 全景平台
+     */
+    workerPic: &quot;&quot;,
+    /**
+     * 登陆总时长 单位：分
+     */
+    workTime: 11,
+    /**
+     * 飞行总时长 分
+     */
+    flyTime: 11,
+    /**
+     * 飞行过的最大高度
+     */
+    flyHeightMax: 111,
+    /**
+         * 飞行总里程  单位：米
+         */
+    flyInstance: 11,
+    /**
+     * 巡检总里程 单位 米
+     * 不包含无工单飞行
+     */
+    workOrderInstance: 111,
+    /**
+     * 执飞总架次
+     */
+    workCount: 111,
+    /**
+     * 飞手唯一识别码 所有其他与用户有关的接口，全部添加该字段值的请求头
+     * 其中 请求头为：workerGuid  值为该字段的值
+     */
+    workerGuid: &quot;&quot;,
+    /**
+     * 飞手详情信息
+     * 从全景平台获取 获取到什么 就有什么字段 字段及字段数未知
+     */
+    info: {
+        /**
+        * 飞手照片 非头像  是全景大图
+        */
+        pic: &quot;&quot;
+    }
+}
+</code></pre>
+<h2 id="u822au7ebfu6587u4ef6u4e0bu8f7d0a3ca20id3du822au7ebfu6587u4ef6u4e0bu8f7d3e203ca3e">航线文件下载
+<a id=航线文件下载> </a></h2>
+<p></p>
+<h3 id="-51">基本信息</h3>
+<p><strong>Path：</strong> /app/main/deviceProtocol</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-52">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>分组识别码 可以用作线路识别码</td>
+</tr>
+<tr>
+<td>deviceType</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>0 杆塔 1风机 2太阳能板</td>
+</tr>
+<tr>
+<td>deviceGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxx</td>
+<td>设备唯一guid</td>
+</tr>
+<tr>
+<td>type</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>0 正常巡检 1 红外巡检</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-53">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+      * 最后更新时间
+      */
+  updateTime: &quot;yyyy-MM-dd HH:mm:ss&quot;,
+  /**
+   * 更新操作员
+   */
+  updater: &quot;郭浩&quot;
+  /**
+   * 设备识别码
+   */
+  deviceGuid: &quot;xxx&quot;,
+  /**
+   * 设备所属线路id
+   */
+  groupGuid: &quot;xxxx&quot;,
+  /**
+   * 设备类型 0杆塔 1风机 2太阳能板
+   */
+  deviceType: 0,
+  /**
+   * 杆塔坐标 台账数据 高度为 海拔高度
+   */
+  la: &quot;22.1213511&quot;,
+  lo: &quot;22.1213511&quot;,
+  al: &quot;22.1213511&quot;,
+  /**
+   * 协议文件数据实体
+   */
+  data: &quot;&quot;
+}
+</code></pre>
+<h2 id="u83b7u53d6u5f53u524du65e0u4ebau673au7684u63a8u6d41u5730u57400a3ca20id3du83b7u53d6u5f53u524du65e0u4ebau673au7684u63a8u6d41u5730u57403e203ca3e">获取当前无人机的推流地址
+<a id=获取当前无人机的推流地址> </a></h2>
+<p></p>
+<h3 id="-54">基本信息</h3>
+<p><strong>Path：</strong> /app/main/streamMediaUrl</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-55">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>equipmentNo</td>
+<td>text</td>
+<td>是</td>
+<td>xxxxxxx</td>
+<td>监控模块编码，一般使用无人机serialNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-56">返回数据</h3>
+<pre><code class="language-javascript">{
+&quot;value&quot;:&quot;rtmp://www.xx.com/xxxx&quot;
+}
+</code></pre>
+<h2 id="u83b7u53d6u7a7au57dfu4fe1u606f0a3ca20id3du83b7u53d6u7a7au57dfu4fe1u606f3e203ca3e">获取空域信息
+<a id=获取空域信息> </a></h2>
+<p></p>
+<h3 id="-57">基本信息</h3>
+<p><strong>Path：</strong> /app/main/flyAirSpace</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>2022.04.21日更新：每个空域的 la字段及lo字段删除，使用locations的map集合，其值为 经度：维度形式的 key:value形式</p>
+<h3 id="-58">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unitGuid</td>
+<td>text</td>
+<td>是</td>
+<td>xxxx</td>
+<td>单位guid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-59">返回数据</h3>
+<pre><code class="language-javascript">{
+  /**
+   * 适航区
+   */
+  flyZones: [
+    {
+      /**
+   * 当前空域经纬度集合
+   */
+      locations: [
+        &quot;11.11,11.11&quot;,
+      ],
+      /**
+         * 图形类型 其中：
+         * 0：多边形    由多个坐标点相连构成的区域
+         * 1：圆形     由坐标点中心 结合半径 构成的区域
+         * 2：椭圆     由 坐标中心点，短半径，长半径构成的区域
+         */
+      graphicsType: 2,
+      /**
+         * 只有当前空域为 圆形 或 椭圆形才有效
+         * 如果为 圆形 或 椭圆时，空域坐标中心点
+         * 格式为：纬度,经度
+         */
+      centerLocation: &quot;11.11,11.11&quot;,
+      /**
+         * 只有当前空域为 圆形 或 椭圆形才有效
+         * 如果当前空域为圆形，则为空域半径 单位：米
+         * 如果当前空域为椭圆，则为短半径 单位：米
+         */
+      radius: 2000.0,
+      /**
+         * 只有当前空域为 椭圆形时，才有效
+         * 当前椭圆空域的 长半径
+         */
+      radiusLong: 1500.0,
+      /**
+         * 空域名称 用以标识空域
+         */
+      zoneName: &quot;太原机场禁飞区&quot;,
+      /**
+         * 空域 guid
+         */
+      zoneGuid: &quot;xhdkajaahjlkfhka&quot;,
+      /**
+   * 限制高度 海拔
+   * 只有在限飞区 或者禁飞区 该字段才有效
+   */
+      height: 111.11,
+      /**
+  * 有效开始时间
+  * 如果时间未知，可以为0 则始终有效 long
+  */
+      startTime: 1111,
+      /**
+   * 有效结束时间
+   * 如果时间未知，可以为0 则始终有效
+   */
+      endTime: 111
+    }
+  ],
+  /**
+   * 限飞区
+   */
+  warningZones: [
+    {
+      /**
+   * 当前空域经纬度集合
+   */
+      locations: [
+        &quot;11.11,11.11&quot;,
+      ],
+      /**
+   * 限制高度 海拔
+   * 只有在限飞区 或者禁飞区 该字段才有效
+   */
+      height: 111.11,
+      /**
+  * 有效开始时间
+  * 如果时间未知，可以为0 则始终有效 long
+  */
+      startTime: 1111,
+      /**
+   * 有效结束时间
+   * 如果时间未知，可以为0 则始终有效
+   */
+      endTime: 111
+    }
+  ],
+  /**
+   * 禁飞区
+   */
+  interceptZones: [
+    {
+      /**
+   * 当前空域经纬度集合
+   */
+      locations: [
+        &quot;11.11,11.11&quot;,
+      ],
+      /**
+   * 限制高度 海拔
+   * 只有在限飞区 或者禁飞区 该字段才有效
+   */
+      height: 111.11,
+      /**
+  * 有效开始时间
+  * 如果时间未知，可以为0 则始终有效 long
+  */
+      startTime: 1111,
+      /**
+   * 有效结束时间
+   * 如果时间未知，可以为0 则始终有效
+   */
+      endTime: 111
+    }
+  ]
+}
+</code></pre>
+
+            <footer class="m-footer">
+              <p>Build by <a href="https://ymfe.org/">YMFE</a>.</p>
+            </footer>
+          </div>
+        </div>
+      </body>
+      </html>
+      

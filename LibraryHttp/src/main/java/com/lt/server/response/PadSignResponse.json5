@@ -1,0 +1,15 @@
+{
+    /**
+     * 授权验证token
+     * 有效期 48小时
+     */
+    token: "",
+    /**
+     * pad 别名 可以为空
+     */
+    name: "",
+    /**
+     * 授权到期时间   yyyy-MM-dd HH:mm:ss
+     */
+    signTimeOut: ""
+}

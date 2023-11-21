@@ -1,0 +1,14 @@
+apply plugin: 'com.android.application'
+/**
+ * 渠道配置  app模块
+ * 包含 应用名称，应用包名，应用图标等
+ */
+android {
+    defaultConfig {
+        applicationId rootProject.ext.android['applicationId']
+        versionName  rootProject.ext.android['versionName']
+    }
+}
+dependencies {
+
+}

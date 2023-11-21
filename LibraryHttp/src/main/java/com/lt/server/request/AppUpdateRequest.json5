@@ -1,0 +1,15 @@
+{
+    /**
+     * 当前版本名称
+     */
+    versionName: "",
+    /**
+     * 当前版本号
+     */
+    versionCode:11,
+    /**
+     * 当前版本发布时间
+     * yyyy-MM-dd HH:mm:ss
+     */
+    updateTime: "2022-04-11 20:00:22"
+}

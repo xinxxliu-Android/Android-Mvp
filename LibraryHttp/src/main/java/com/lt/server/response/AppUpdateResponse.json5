@@ -1,0 +1,32 @@
+{
+    /**
+     * 1641866024000 版本发布时间
+     */
+    upTime: 112131231,
+    /**
+     * 文件路径
+     * group1/M00/02/27/wKgBw2Hc43iAfWamAAAAPvLtZGo340.apk
+     * 使用时，将使用 当前api的 host 拼接该路径
+     * 如：
+     * {@link com.lt.config.BaseUrlConfig#BASE_URL}/group1/M00/02/27/wKgBw2Hc43iAfWamAAAAPvLtZGo340.apk
+     */
+    filePath: "",
+    /**
+     * 版本更新日志
+     * 从app当前版本--该版本
+     * 注意：使用换行符隔开每个条目
+     */
+    description: "",
+    /**
+    * 版本名
+    */
+    versionName: "",
+    /**
+     * 版本号
+     */
+    versionCode: 123,
+    /**
+     * 否强制更新 0 非强制 1 强制
+     */
+    compel: 0
+}

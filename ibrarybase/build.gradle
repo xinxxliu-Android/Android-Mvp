@@ -1,0 +1,5 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+dependencies {
+    api (rootProject.ext.dependencies['butterKnife'],rootProject.ext.excludeAndroidxGroup)
+    kapt rootProject.ext.annotationProcessor['butterKnife']
+}

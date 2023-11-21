@@ -1,0 +1,14 @@
+{
+  /**
+   * 当前需要采集航迹的设备 guid
+   */
+  deviceGuid: "xxxxxx",
+  /**
+  * 当前需要采集航迹的设备 所对应的分组 的guid
+  */
+  groupGuid: "xxxxxx",
+  /**
+  * 当前工单 guid
+  */
+  orderGuid: "xxxxxx"
+}

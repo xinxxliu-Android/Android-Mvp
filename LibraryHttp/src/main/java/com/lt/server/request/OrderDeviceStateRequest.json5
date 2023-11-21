@@ -1,0 +1,26 @@
+{
+  /**
+   * 当前工单guid
+   */
+  inspectGuid: "",
+  /**
+  * 架次guid
+  */
+  flyGuid: "",
+  /**
+  * 设备所在的分组guid
+  */
+  groupGuid: "",
+  /**
+  * 设备guid
+  */
+  deviceGuid: "",
+  /**
+     * 自主(yes)手动(no)
+     */
+  selfInspection: "",
+  /**
+   * 巡检模式
+   */
+  inspectMode: 0
+}

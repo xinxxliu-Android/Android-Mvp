@@ -1,0 +1,14 @@
+{
+  /**
+     * 授权账号
+     */
+  signName: "xxxx",
+  /**
+     * 授权密码
+     */
+  signPsw: "xxx",
+  /**
+     * pad唯一识别码
+     */
+  padGuid: "xxx"
+}

@@ -1,0 +1,8 @@
+1.新的日志输出和上传框架管类：LogManage
+2.初始化：调用LogManager.getInstance().init,要设置路径等属性时，需要在init()方法之前
+3.日志写入到文件,调用LogManager.getInstance().log()方法
+4.日志上传，调用LogManager.getInstance().upload()方法
+5.调用日志上传方法前，会自动调用Logan.f()方法将日志强制写入到文件中
+6.主要使用的方法为  3  4两步中的方法
+7.本框架日志是存放在文件和上传到服务器端的，控制台无法查看
+8.log()方法两个参数，第一个是日志内容，第二个是日志类型，int类型，可以在本类中自定义

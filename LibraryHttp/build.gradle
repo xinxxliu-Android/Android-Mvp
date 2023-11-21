@@ -1,0 +1,13 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+
+
+dependencies {
+    api rootProject.ext.dependencies['retrofit']
+    api rootProject.ext.dependencies['okHttp']
+    api rootProject.ext.dependencies['logging']
+    api rootProject.ext.dependencies['retrofit_converter']
+    api rootProject.ext.dependencies['retrofit_adapter']
+    api rootProject.ext.dependencies['rxjava']
+    api rootProject.ext.dependencies['rxAndroid']
+    api project(path: ":LibraryLog")
+}

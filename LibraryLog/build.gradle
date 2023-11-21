@@ -1,0 +1,14 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+
+dependencies {
+
+    implementation rootProject.ext.androidX['appcompat']
+    implementation rootProject.ext.androidX['material']
+    /**
+     * 集成美团的日志框架，只在此模块中使用，以防止外部使用，
+     * 不调用日志保存上传的方法，导致日志丢失
+     */
+    implementation 'com.dianping.android.sdk:logan:1.2.4'
+    implementation 'com.blankj:utilcodex:1.31.1'
+
+}

@@ -1,0 +1,117 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion rootProject.ext.android['compileSdkVersion']
+    defaultConfig {
+        minSdkVersion rootProject.ext.android['minSdkVersion']
+        targetSdkVersion rootProject.ext.android['targetSdkVersion']
+        versionCode rootProject.ext.android['versionCode']
+//        manifestPlaceholders = rootProject.ext.placeHolders
+        ndk {
+            //设置支持的SO库架构
+            abiFilters = rootProject.ext.abiFilter //,'x86',  'x86_64', 'arm64-v8a','armeabi',
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.PROJECT_PACKAGE_NAME 值为当前应用包名。 方便调用
+         */
+        buildConfigField "String", "PROJECT_PACKAGE_NAME", "\"${rootProject.ext.android['applicationId']}\""
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.CHANNEL_KEY值为当前渠道名。具体值参考 FlyingProject/channel.gradle文件
+         */
+        buildConfigField "String", "CHANNEL_KEY", "\"${rootProject.ext.android['CHANNEL_KEY']}\""
+
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.CHANNEL_TYPE值为当前渠道类型。具体值参考 FlyingProject/channel.gradle文件
+         */
+        buildConfigField "int", "CHANNEL_TYPE", "${rootProject.ext.android['CHANNEL_TYPE']}"
+
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.VERSION_NAME值为当前应用版本名称。具体值参考 FlyingProject/app/channelConfig.gradle
+         */
+        buildConfigField "String", "VERSION_NAME", "\"${rootProject.ext.android['versionName']}\""
+        /**
+         * 子模块中 BuildConfig定义自定义字段
+         * 定义BuildConfig.VERSION_NAME值为当前应用版本名称。具体值参考 FlyingProject/config.gradle
+         */
+        buildConfigField "String", "VERSION_CODE", "\"${versionCode}\""
+
+    }
+
+    buildTypes {
+        // 参考 https://www.cnblogs.com/Im-Victor/p/9450815.html
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 支持java8语法
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions{
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    aaptOptions {
+        cruncherEnabled true//快速处理PNG图片
+    }
+    lintOptions {
+        disable 'MissingTranslation'
+        abortOnError false        // true by default
+        checkAllWarnings false
+        checkReleaseBuilds false
+        ignoreWarnings true       // false by default
+        quiet true                // false by default
+    }
+    /**
+     * 将libs文件夹映射为jniLibs文件夹
+     * 这样处理，可将so文件及aar、jar等统一放入libs文件
+     * 并且在Android视图下，可正常预览到添加到libs文件夹的所有文件
+     * 且，如果需要引用libs中的资源，直接在fileTree的include数组中添加对应的 *.后缀名 即可引用。
+     * 如：implementation fileTree(include: ['*.jar','*.aar','*.so','*.*'], dir: 'libs')
+     */
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        compileOnly fileTree(dir: 'libs', include: ['*.aar'])
+    testImplementation('junit:junit:4.12', rootProject.ext.excludeAndroidxGroup)
+    androidTestImplementation('androidx.test.ext:junit:1.1.2', rootProject.ext.excludeAndroidxGroup)
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0', rootProject.ext.excludeAndroidxGroup)
+    implementation(rootProject.ext.androidX['core_ktx'], rootProject.ext.excludeAndroidxGroup)
+    implementation(rootProject.ext.androidX['appcompat'])
+//    //全部引用 工具类模块
+    if (project.name != "LibraryUtils" && project.name != "LibraryInterface"
+            && project.name != "LibraryEncrypt" && project.name != "LibraryLog")
+        implementation project(path: ':LibraryUtils')
+//    //全部引用 项目通用接口模块
+    if (project.name != "LibraryInterface" && project.name != "LibraryLog")
+        implementation project(path: ':LibraryInterface')
+//    //全部引用 Log模块
+    if (project.name != "LibraryLog")
+        implementation project(path: ':LibraryLog')
+}
+//  在module中 使用：
+//apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+/**
+ * 渠道配置  必须在最下方。防止该配置文件中的配置被覆盖。
+ */
+//apply from: "${rootProject.getProjectDir()}/channelConfig.gradle"

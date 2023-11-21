@@ -1,0 +1,10 @@
+{
+  /**
+     * 工单guid
+     */
+  orderGuid: "fgahjg",
+  /**
+   * 飞手guid
+   */
+  workerGuid: "fogailj"
+}

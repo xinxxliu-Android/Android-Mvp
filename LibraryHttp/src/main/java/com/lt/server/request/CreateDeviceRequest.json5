@@ -1,0 +1,31 @@
+{
+    /**
+     * 分组名
+     * 如 蓝天一线 参考{@link com.lt.server.response.Group}中字段
+     */
+    groupName: "蓝天一线",
+    /**
+     * 分组类型 参考 {@link com.lt.server.response.Group}中字段
+     */
+    groupType: 1,
+    /**
+     * 如果当前是在已有的分组中新建设备，那么该字段有值
+     * 否则，为空 参考 {@link com.lt.server.response.Group}中字段
+     */
+    groupGuid: "",
+    /**
+     * 设备名 如： #3
+     * 参考 {@link com.lt.server.response.Device}中字段
+     */
+    deviceName: "#1",
+    /**
+    * 设备类型
+    * 参考 {@link com.lt.server.response.Device}中字段
+    */
+    deviceType: 1,
+    /**
+     * 设备电压等级
+     * 参考 {@link com.lt.server.response.Device}中字段
+     */
+    voltageLevel: "110KV"
+}
