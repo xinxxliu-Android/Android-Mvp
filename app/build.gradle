@@ -24,13 +24,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+//获取当前时间
+def releaseTime() {
+    return new Date().format("yyyy年MM月dd日", TimeZone.getTimeZone("GMT+08:00"))
+}
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation project(path: ':LibraryBase')
+    implementation project(path: ':LibraryHttp')
+    implementation project(path: ':LibraryLog')
+    implementation project(path: ':LibraryConfig')
+    implementation project(path: ':LibraryUtils')
+    implementation project(path: ':LibraryWindow')
+    implementation project(path: ':LibraryMap')
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
