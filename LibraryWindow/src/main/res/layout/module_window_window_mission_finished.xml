@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/global_window_bg">
+
+    <com.lt.widget.v.TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_26"
+        android:text="航线任务已结束"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold" />
+
+    <com.lt.widget.v.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/finish_msg"
+        android:text="航线任务已结束！！"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_22"
+        android:layout_marginTop="@dimen/dp_22"
+        />
+    <com.lt.widget.v.Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_36"
+        android:background="@drawable/selector_global_window_btn_confirm_bg"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_15" />
+</com.lt.widget.g.LinearLayout>

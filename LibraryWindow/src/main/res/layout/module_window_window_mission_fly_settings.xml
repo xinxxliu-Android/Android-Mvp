@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_700"
+    android:layout_height="match_parent"
+    android:background="@mipmap/global_window_bg"
+    android:orientation="vertical">
+
+    <com.lt.widget.g.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_20">
+
+        <com.lt.widget.g.LinearLayout
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.lt.widget.g.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.lt.widget.v.TextView
+                    style="@style/flyTextStyle"
+                    android:layout_centerVertical="true"
+                    android:text="跨塔相对航点高度" />
+
+                <com.lt.widget.v.SeekBar
+                    android:id="@+id/seek_module_fragment_compare_height"
+                    style="@style/DroneFragmentSeekBarStyle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_weight="1"
+                    android:max="5" />
+
+                <com.lt.widget.v.TextView
+                    android:id="@+id/tv_module_fragment_compare_height"
+                    style="@style/flyTextStyle"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="1m" />
+            </com.lt.widget.g.LinearLayout>
+
+
+            <com.lt.widget.g.RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_31"
+                android:orientation="horizontal">
+
+                <com.lt.widget.v.TextView
+                    style="@style/flyTextStyle"
+                    android:text="拍摄方式" />
+
+                <com.lt.widget.v.TextView
+                    android:id="@+id/tv_module_fragment_shot_mode"
+                    android:layout_width="@dimen/dp_160"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:background="@drawable/shape_module_window_mission_settings_bg"
+                    android:button="@null"
+                    android:drawableEnd="@mipmap/icon_mission_settings_down"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_11"
+                    android:text="未知"
+                    android:textColor="@color/white" />
+            </com.lt.widget.g.RelativeLayout>
+
+
+        </com.lt.widget.g.LinearLayout>
+
+        <Space
+            android:layout_width="@dimen/dp_73"
+            android:layout_height="wrap_content" />
+
+        <com.lt.widget.g.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.lt.widget.v.TextView
+                style="@style/flyTextStyle"
+                android:layout_centerVertical="true"
+                android:text="航点计算设置" />
+
+            <com.lt.widget.g.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center_vertical">
+
+                <com.lt.widget.v.TextView
+                    android:id="@+id/tv_module_fragment_shot_distance"
+                    style="@style/flyTextStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:text="拍照距离" />
+
+                <com.lt.widget.v.SeekBar
+                    android:id="@+id/seek_module_window_shoot_distance"
+                    style="@style/DroneFragmentSeekBarStyle"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_weight="1"
+                    android:max="8" />
+
+                <com.lt.widget.v.TextView
+                    android:id="@+id/tv_module_window_shoot_distance"
+                    style="@style/flyTextStyle"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="米" />
+            </com.lt.widget.g.LinearLayout>
+
+
+            <com.lt.widget.g.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.lt.widget.v.TextView
+                    style="@style/flyTextStyle"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:text="拍照点云台角度" />
+
+                <com.lt.widget.v.SeekBar
+                    android:id="@+id/seek_module_fragment_shot_angle"
+                    style="@style/DroneFragmentSeekBarStyle"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:max="70" />
+
+                <com.lt.widget.v.TextView
+                    android:id="@+id/tv_module_fragment_shot_angle"
+                    style="@style/flyTextStyle"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="米" />
+            </com.lt.widget.g.LinearLayout>
+
+            <com.lt.widget.v.TextView
+                android:id="@+id/tv_module_fragment_shoot_hor_distance"
+                style="@style/flyTextStyle"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="米" />
+
+            <com.lt.widget.v.TextView
+                android:id="@+id/tv_module_fragment_shoot_ver_distance"
+                style="@style/flyTextStyle"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="米" />
+
+        </com.lt.widget.g.LinearLayout>
+
+    </com.lt.widget.g.LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1" />
+
+    <com.lt.widget.g.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_30"
+        android:gravity="center">
+
+        <com.lt.widget.v.Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_global_window_btn_cancel_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+        <Space
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="1dp" />
+
+        <com.lt.widget.v.Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_global_window_btn_confirm_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+    </com.lt.widget.g.LinearLayout>
+
+</com.lt.widget.g.LinearLayout>
+
+

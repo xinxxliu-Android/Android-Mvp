@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    默认 通用 界面返回按钮图片-->
+    <item android:state_pressed="false" android:drawable="@mipmap/icon_global_page_back"/>
+    <item android:state_pressed="true" android:drawable="@mipmap/icon_global_page_back_pressed"/>
+</selector>

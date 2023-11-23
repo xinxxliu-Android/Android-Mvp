@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    企业姓名长度限制-->
+    <integer name="companyNameLength">8</integer>
+    <!--    企业签名长度限制-->
+    <integer name="companySignLength">8</integer>
+<!--    用户昵称长度限制-->
+    <integer name="userNameLength">8</integer>
+</resources>

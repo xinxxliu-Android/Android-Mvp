@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#4ba3ef</color>
+    <color name="colorPrimaryDark">#4ba3ef</color>
+    <color name="colorAccent">#4ba3ef</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fly_record_view_color">#3368C8FF</color>
+    <color name="fly_record_view_defalut">#552F72B1</color>
+    <color name="fly_record_interceptZone_view_color">#7ffc641b</color>
+    <color name="black_transparent">#80000000</color>
+
+    <color name="colorAppBackground">#303030</color>
+
+    <color name="primary_black">#cc1f1f1f</color>
+    <color name="black_transparent_press">#821f1f1f</color>
+    <color name="fly_check_blue">#4ba3ef</color>
+    <color name="seek_bar_bg">#ababab</color>
+    <color name="setting_item_content_black">#2a2a2d</color>
+    <color name="btn_press_color">#AD4BA3EF</color>
+
+
+    <color name="dialog_title_color">#A9000000</color>
+    <color name="dialog_bottom_press_color">#BF000000</color>
+
+    <color name="app_blue_color">#4ba3ef</color>
+    <color name="app_green_color">#74d76d</color>
+    <color name="file_list_color">#FFFFFF</color>
+
+    <color name="btn_color_pressed">#4ba3ef</color>
+    <color name="btn_color_defalut">#3398F0</color>
+
+    <color name="activity_title_bg_color">#181818</color>
+
+    <color name="low_battery_color">#FFC400</color>
+    <color name="serious_low_battery_color">#FF3D00</color>
+
+    <color name="text_gray">#666666</color>
+
+    <color name="line_tx_color">#FFC400</color>
+    <color name="line_color"></color>
+    <color name="app_gray_bg">#efefef</color>
+    <color name="app_green_color2">#BC74D76D</color>
+    <color name="order_et_color">#77A7D9</color>
+
+
+    <color name="dark_gray">#BC939493</color>
+    <color name="red">#F80303</color>
+    <color name="green">#64DD17</color>
+    <color name="yellow">#FFD600</color>
+    <color name="blue">#0091EA</color>
+    <color name="white_half">#77ffffff</color>
+
+
+    <color name="tower_line_color">#FFAB00</color>
+    <color name="tower_info_tx_color">#FFC400</color>
+    <color name="aircraft_home_line_color">#64DD17</color>
+    <color name="fine_patrol_line_color">#4ba3ef</color>
+    <color name="task_info_div_color">#6DD8D6D6</color>
+    <color name="map_shoot_postion_color">#00C853</color>
+
+    <color name="dialog_title_background_color">#80E0E0E0</color>
+    <color name="color_111926">#2B192601</color>
+    <color name="global_window_input_background">#2B192601</color>
+    <color name="color_2C5A85">#FF2C5A85</color>
+    <color name="color_FF7DFCA6">#FF7DFCA6</color>
+    <color name="color_FF012149">#FF012149</color>
+    <color name="color_FF95B8E4">#FF95B8E4</color>
+    <color name="color_FFD6B673">#FFD6B673</color>
+    <color name="color_FF2F72B1">#FF2F72B1</color>
+    <color name="color_3343A0FF">#3343A0FF</color>
+    <color name="color_3363E3FF">#3363E3FF</color>
+    <color name="color_FF35F3FF">#FF35F3FF</color>
+    <color name="color_FFB6DFFF">#FFB6DFFF</color>
+    <color name="color_FF68C8FF">#4A86B8FF</color>
+    <color name="color_FF3CAFFF">#FF3CAFFF</color>
+    <color name="color_FF20304A">#FF20304A</color>
+    <color name="color_FF8BA4CC">#FF8BA4CC</color>
+    <color name="color_FF75B6F8">#FF75B6F8</color>
+    <color name="color_FF385D83">#FF385D83</color>
+    <color name="color_FF6F99C8">#FF6F99C8</color>
+    <color name="color_FF4470AD">#FF4470AD</color>
+    <color name="color_FF355380">#FF355380</color>
+    <color name="color_FF16284A">#FF16284A</color>
+    <color name="color_FF3D668C">#FF3D668C</color>
+    <color name="color_FF4FE0FF">#FF4FE0FF</color>
+    <color name="color_FF4BA3EF">#FF4BA3EF</color>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="net_error">网络错误</string>
+    <string name="net_error_please_check">网络错误，请检查网络</string>
+    <string name="now_is_offline_mode">"离线状态下 无法执行当前操作"</string>
+
+    <string name="update_version">版本更新</string>
+    <string name="flying_log">飞行日志</string>
+    <string name="line_model">航线模版</string>
+    <string name="line_file">航线文件</string>
+    <string name="offline_map">离线地图</string>
+    <string name="hand_line">手采航线</string>
+    <string name="download_pic">图片下载</string>
+    <string name="lic">lic</string>
+    
+    <string name="encrypted_line">已加密航线</string>
+    <string name="un_encrypted_line">未加密航线</string>
+    <string name="pvroute_line">光伏航线</string>
+
+    <string name="encrypted_model">已加密模板</string>
+    <string name="un_encrypted_model">未加密模板</string>
+
+    <string name="json_path">json</string>
+    <string name="kml_path">kml</string>
+    <string name="pw_path">pwline</string>
+    <string name="excel_path">excel</string>
+    <string name="routerplan_path">点云规划</string>
+</resources>

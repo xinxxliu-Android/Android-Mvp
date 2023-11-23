@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    应用主题颜色 在欢迎界面中 初始化状态颜色-->
+    <color name="global_theme_color">#ff17a47b</color>
+</resources>

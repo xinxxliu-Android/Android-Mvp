@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_library_base_loading"
+    android:minWidth="@dimen/dp_150"
+    android:minHeight="@dimen/dp_150"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_5">
+
+    <com.lt.widget.v.ImageView
+        android:id="@+id/close"
+        android:layout_width="@dimen/dp_35"
+        android:layout_height="@dimen/dp_35"
+        android:layout_gravity="right|top"
+        android:src="@mipmap/global_window_close"
+        android:padding="@dimen/dp_5"/>
+
+    <com.lt.widget.v.ImageView
+        android:id="@+id/iv_loading_icon"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:src="@mipmap/loading_3"
+        android:layout_gravity="center"/>
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/tv_loading_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="正在加载..."
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        android:layout_gravity="center"
+        android:textStyle="bold" />
+</com.lt.widget.g.LinearLayout>

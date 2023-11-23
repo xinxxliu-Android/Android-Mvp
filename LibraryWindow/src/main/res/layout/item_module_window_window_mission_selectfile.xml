@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingStart="@dimen/dp_18"
+    android:paddingTop="@dimen/dp_6"
+    android:id="@+id/item"
+    android:gravity="center"
+    android:paddingBottom="@dimen/dp_6">
+    <com.lt.widget.v.Button
+        android:id="@+id/btn_nav"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_30"
+        android:layout_gravity="center"
+        android:background="@mipmap/global_window_btn_cancel"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="导航"
+        android:textColor="@color/white" />
+    <com.lt.widget.v.ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/icon_item_module_window_window_mission_selectfile" />
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/name"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        tools:text="220kv牛首3.json220kv牛首3.json"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxLength="45"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+    <com.lt.widget.g.LinearLayout
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="wrap_content">
+
+        <com.lt.widget.v.CheckBox
+            android:id="@+id/box"
+            android:theme="@style/import_tower_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text=""
+            android:textColor="@color/white" />
+    </com.lt.widget.g.LinearLayout>
+
+
+</com.lt.widget.g.LinearLayout>

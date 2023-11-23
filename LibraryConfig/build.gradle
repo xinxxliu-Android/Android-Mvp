@@ -1,0 +1,24 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+android{
+//    defaultConfig{
+//        /**
+//         * 定义BuildConfig.HTTP_TYPE 值为当前应用包名。 方便调用
+//         * http请求方式  0：http 1：https
+//         */
+//        buildConfigField "int", "HTTP_TYPE", "${rootProject.ext.http['HTTP_TYPE']}"
+//
+//        /**
+//         * 定义BuildConfig.ENCRYPT_TYPE 值为当前应用包名。 方便调用
+//         * 加密方式 目前有2种 重庆2种 其他地区一种 0：默认 1：重庆加密
+//         */
+//        buildConfigField "int", "ENCRYPT_TYPE", "${rootProject.ext.http['ENCRYPT_TYPE']}"
+//    }
+}
+dependencies {
+//    implementation project(path: ':LibraryEntity')
+    implementation rootProject.ext.androidX['material']
+    implementation rootProject.ext.androidX['appcompat']
+//    api project(path: ':LibraryChannel')
+    api 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+//    implementation rootProject.ext.androidX['lifecycle_extensions']
+}

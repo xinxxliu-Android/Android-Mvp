@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--巡视任务界面 通用 按钮/菜单背景-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+<!--    巡检界面 默认的 按钮背景-->
+    <gradient
+        android:startColor="#b22758C9"
+        android:endColor="#b226C4FF"
+        android:angle="270"/>
+</shape>

@@ -1,0 +1,18 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+dependencies {
+    implementation (rootProject.ext.dependencies['butterKnife'],{
+        exclude group:"androidx.core"
+    })
+    implementation (rootProject.ext.widget['constraintlayout'],{
+        exclude group:"androidx.core"
+    })
+    kapt rootProject.ext.annotationProcessor['butterKnife']
+    api rootProject.ext.androidX['appcompat']
+    api rootProject.ext.widget['recyclerview']
+    api (rootProject.ext.dependencies['EASY_POPUP'],{
+        exclude group:"androidx.core"
+    })
+//    implementation project(path:":LibraryBase")
+    implementation project(path:":LibraryConfig")
+    implementation project(path: ':LibraryHttp')
+}

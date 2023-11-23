@@ -1,0 +1,133 @@
+apply plugin: 'com.android.library'
+
+android {
+    sourceSets {
+        main {
+            //根据地区渠道，定义需要加载的资源路径，用以自定义资源路径
+            switch (rootProject.ext.android['CHANNEL_KEY']) {
+            //重庆市
+                case channel.chong_qing:
+                    res.srcDirs += "src/main/res-chong_qing"
+                    assets.srcDirs += "src/main/assets-chong_qing"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-chong_qing"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.xi_ning_2:
+                    res.srcDirs += "src/main/res-xi_ning"
+                    assets.srcDirs += "src/main/assets-xi_ning"
+                    java.srcDirs += "src/main/java-xi_ning_2"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.xi_ning:
+                    res.srcDirs += "src/main/res-xi_ning"
+                    assets.srcDirs += "src/main/assets-xi_ning"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-xi_ning"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.tai_yuan:
+                    res.srcDirs += "src/main/res-tai_yuan"
+                    assets.srcDirs += "src/main/assets-tai_yuan"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-tai_yuan"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                    //北京正式环境
+                case channel.bei_jing:
+                    res.srcDirs += "src/main/res-default"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-beijing"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                    //北京测试环境
+                case channel.test_beijing:
+                    res.srcDirs += "src/main/res-default"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-test_beijing"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                    //非任何地区 才加载该资源路径。
+                    //注意。res文件是 无论任何地区都加载。该路径是 只有非任何已定义地区 才加载
+                case channel.meng_dong:
+                case channel.meng_dong_machine:
+                    res.srcDirs += "src/main/res-meng_dong"
+                    assets.srcDirs += "src/main/assets-meng_dong"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-meng_dong"
+                    break
+                case channel.shi_jia_zhuang:
+                    res.srcDirs += "src/main/res-he_bei"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-shi_jia_zhuang"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.guo_hua:
+                    res.srcDirs += "src/main/res-default"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-guo_hua"
+                    java.srcDirs += "src/main/java-energy_url"
+                    break
+                case channel.zhong_guang_he:
+                    res.srcDirs += "src/main/res-default"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-zhong_guang_he"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.tai_zhou:
+                    res.srcDirs += "src/main/res-default"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-tai_zhou"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                case channel.qing_neng_yuan:
+                    res.srcDirs += "src/main/res-qing_neng_yuan"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-qing_neng_yuan"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+                default:
+                    res.srcDirs += "src/main/res-qing_neng_yuan"
+                    assets.srcDirs += "src/main/assets-default"
+                    if (rootProject.ext.config['IS_ALONE'])
+                        java.srcDirs += "src/main/java-alone"
+                    else
+                        java.srcDirs += "src/main/java-default"
+                    java.srcDirs += "src/main/java-default_url"
+                    break
+            }
+        }
+    }
+}
+dependencies {
+
+}

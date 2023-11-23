@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/global_window_bg"
+    android:orientation="vertical">
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/type_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_30"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_30"
+        android:paddingBottom="@dimen/dp_10"
+        android:tag="1"
+        android:text="开始点调整"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70" />
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/type_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_30"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_30"
+        android:paddingBottom="@dimen/dp_10"
+        android:tag="2"
+        android:text="目标点调整"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70" />
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/type_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_30"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_30"
+        android:paddingBottom="@dimen/dp_10"
+        android:tag="3"
+        android:text="边飞边调"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+</com.lt.widget.g.LinearLayout>

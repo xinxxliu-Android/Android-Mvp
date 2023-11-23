@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/global_window_bg">
+
+    <com.lt.widget.v.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_28"
+        android:layout_marginTop="@dimen/dp_26"
+        android:text="开启直播推流"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold" />
+
+    <com.lt.widget.v.ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="@dimen/dp_22"
+        android:paddingEnd="@dimen/dp_28"
+        android:src="@mipmap/global_window_close" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@+id/close"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_30"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.lt.widget.v.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推流方式："
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
+        <RadioButton
+            android:id="@+id/screen_stream_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:button="@drawable/module_window_window_rtmp_radio_bg"
+            android:padding="@dimen/dp_5"
+            android:text="屏幕推流"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_13" />
+
+        <RadioButton
+            android:id="@+id/fpv_stream_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:button="@drawable/module_window_window_rtmp_radio_bg"
+            android:padding="@dimen/dp_5"
+            android:text="FPV推流"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_13" />
+    </RadioGroup>
+
+    <com.lt.widget.g.LinearLayout
+        android:id="@+id/url_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_group"
+        android:layout_marginStart="@dimen/dp_42"
+        android:layout_marginTop="@dimen/dp_44"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/dp_42">
+
+        <com.lt.widget.v.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="地址："
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18" />
+
+        <View
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_40" />
+
+        <com.lt.widget.v.EditText
+            android:id="@+id/input_url"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/color_111926"
+            android:gravity="center_vertical"
+            android:hint="正在加载直播地址，请稍后."
+            android:textColorHint="@color/white"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+    </com.lt.widget.g.LinearLayout>
+
+    <com.lt.widget.v.Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/url_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_36"
+        android:background="@drawable/selector_global_window_btn_confirm_bg"
+        android:gravity="center"
+        android:text="开始推流"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_15" />
+</com.lt.widget.g.RelativeLayout>

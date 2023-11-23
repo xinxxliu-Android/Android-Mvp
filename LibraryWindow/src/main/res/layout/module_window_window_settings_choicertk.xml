@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:background="@mipmap/global_window_bg"
+    android:layout_height="wrap_content">
+    <com.lt.widget.v.TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="无"
+        android:tag="0"
+        android:id="@+id/type_0"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70"/>
+
+    <com.lt.widget.v.TextView
+        android:gravity="center"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="D-RTK 2 移动站"
+        android:tag="1"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        android:id="@+id/type_1"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70"/>
+
+    <com.lt.widget.v.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="千寻网络RTK"
+        android:tag="2"
+        android:gravity="center"
+
+        android:id="@+id/type_2"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        />
+    <com.lt.widget.v.TextView
+        android:id="@+id/tv_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70"/>
+
+    <com.lt.widget.v.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="移动网络RTK"
+        android:tag="3"
+        android:gravity="center"
+        android:id="@+id/type_3"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/translucent_black_70"/>
+    <com.lt.widget.v.TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义网络RTK"
+        android:tag="4"
+        android:id="@+id/type_4"
+        android:gravity="center"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        />
+</com.lt.widget.g.LinearLayout>

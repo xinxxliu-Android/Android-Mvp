@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="module_welcome_window_permission_textcontext">#666666</color>
+    <color name="library_window_permission_true_back">#0081FF</color>
+
+</resources>

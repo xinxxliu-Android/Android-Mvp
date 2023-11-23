@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    所有logo下方的描述 text style-->
+    <style name="LogoDesc">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_66</item>
+    </style>
+    <!--    应用内所有输入框 统一样式-->
+    <style name="AppInput">
+        <item name="android:textColor">@color/color_66</item>
+        <item name="android:textColorHint">#cccccc</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+    <!--    应用所有的 字标题 统一-->
+    <style name="SubTitle">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/color_99</item>
+    </style>
+<!--    所有窗口按钮 风格统一-->
+    <style name="WindowButtonStyle">
+        <item name="android:paddingTop">@dimen/dp_8</item>
+        <item name="android:paddingBottom">@dimen/dp_8</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+<!--    所有界面按钮 风格统一-->
+    <style name="ActivityButtonStyle">
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="IconStyle">
+        <item name="android:layout_height">@dimen/dp_38</item>
+        <item name="android:layout_width">@dimen/dp_38</item>
+    </style>
+</resources>

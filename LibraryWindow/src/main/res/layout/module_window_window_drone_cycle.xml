@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lt.widget.g.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/global_window_bg"
+    android:orientation="vertical">
+
+    <com.lt.widget.g.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.lt.widget.v.TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_weight="1"
+            android:text="提示"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_24"
+            android:textStyle="bold" />
+
+        <com.lt.widget.v.ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_22"
+            android:paddingEnd="@dimen/dp_28"
+            android:src="@mipmap/global_window_close" />
+    </com.lt.widget.g.LinearLayout>
+
+    <com.lt.widget.v.TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_0"
+        android:layout_below="@id/url_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_weight="1"
+        android:text="您的无人机已飞行160架次，即将到达维护周期"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18" />
+</com.lt.widget.g.LinearLayout>

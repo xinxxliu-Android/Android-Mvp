@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_window_loading_error">加载失败</string>
+    <string name="library_window_loading_success">加载成功</string>
+    <!--弹窗 权限-->
+    <string name="module_welcome_window_permission_title">提示</string>
+    <string name="module_welcome_window_permission_textcontext">检测到关键系统权限没有开启\n导致APP不能正常运行</string>
+    <string name="module_welcome_window_Permission_true">立刻开启</string>
+    <string name="module_welcome_window_permission_false">关闭</string>
+</resources>

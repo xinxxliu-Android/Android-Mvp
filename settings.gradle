@@ -4,4 +4,8 @@ include ':LibraryUtils'
 include ':LibraryLog'
 include ':LibraryInterface'
 include ':LibraryHttp'
+include ':LibraryMap'
+include ':LibraryConfig'
+include ':LibraryWindow'
+
 
