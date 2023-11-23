@@ -1,0 +1,18 @@
+apply from: "${rootProject.getProjectDir()}/libraryConfig.gradle"
+dependencies {
+    implementation rootProject.ext.androidX['appcompat']
+    implementation rootProject.ext.androidX['material']
+
+    //思极地图
+    compileOnly fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    api rootProject.ext.dependencies['osmdroid']
+    //rxJava 用以当作计时器
+    implementation rootProject.ext.dependencies['rxjava']
+    //配置项
+    implementation project(path:':LibraryConfig')
+//    implementation project(path: ':LibraryEntity')
+//    implementation project(path: ":LibraryDaJiangV${rootProject.ext.android.djiVersion}")
+//    implementation project(path: ':LibraryWindow')
+
+}
