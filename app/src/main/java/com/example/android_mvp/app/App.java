@@ -4,38 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
 
-import androidx.multidex.MultiDex;
-
 import com.example.base.PluginBase;
-import com.fly.order.PluginOrder;
-import com.hc.socket.PluginSocket;
 import com.lt.PluginHttp;
 import com.lt.PluginMap;
-import com.lt.PluginMission;
-import com.lt.PluginWelcome;
-import com.lt.base.PluginBase;
-import com.lt.browser.PluginBrowser;
-import com.lt.channel.PluginChannel;
-import com.lt.config.ChannelConfig;
 import com.lt.config.PluginConfig;
-import com.lt.db.PluginDB;
-import com.lt.dj.PluginDaJiang;
-import com.lt.encrypt.PluginEncrypt;
-import com.lt.entity.PluginEntity;
-import com.lt.func.PluginInterface;
-import com.lt.image.PluginImage;
 import com.lt.log.LogManager;
-import com.lt.log.PluginLog;
-import com.lt.main.PluginMain;
-import com.lt.media.PluginMedia;
-import com.lt.router.PluginRouter;
-import com.lt.sdk.PluginSDK;
-import com.lt.service.PluginService;
+import com.lt.utils.CrashHandler;
 import com.lt.utils.PluginUtils;
 import com.lt.utils.RxSchedulers;
-import com.lt.widget.PluginWidget;
 import com.lt.window.PluginWindow;
-import com.secneo.sdk.Helper;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -68,6 +45,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 //        PluginChannel.install(this);
+        CrashHandler.getInstance().init(this);
         /**
          * 初始化日志框架
          * 因为在 PluginLog 中调用了此框架，
@@ -107,7 +85,6 @@ public class App extends Application {
         PluginWindow.install(this);
         //项目 当前模块 app模块
         PluginApp.install(this);
-
 
 
         //启用严格模式
